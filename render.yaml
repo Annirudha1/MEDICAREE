@@ -2,11 +2,11 @@ services:
   - type: web
     name: medicare
     runtime: python
-    buildCommand: |
-      export PATH="/opt/render/project/poetry/bin:$PATH"
-      pip install poetry
-      poetry install
-      poetry run python manage.py collectstatic --no-input
+    buildCommand: >
+      export PATH="/opt/render/project/poetry/bin:$PATH" &&
+      pip install poetry &&
+      poetry install &&
+      poetry run python manage.py collectstatic --no-input &&
       poetry run python manage.py migrate
     startCommand: poetry run gunicorn config.wsgi:application
     envVars:
