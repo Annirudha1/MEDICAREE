@@ -2,8 +2,13 @@ services:
   - type: web
     name: medicare
     runtime: python
-    buildCommand: pip install -r requirements.txt && python manage.py collectstatic --no-input && python manage.py migrate
-    startCommand: gunicorn config.wsgi:application
+    buildCommand: |
+      export PATH="/opt/render/project/poetry/bin:$PATH"
+      pip install poetry
+      poetry install
+      poetry run python manage.py collectstatic --no-input
+      poetry run python manage.py migrate
+    startCommand: poetry run gunicorn config.wsgi:application
     envVars:
       - key: DATABASE_URL
         fromDatabase:

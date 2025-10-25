@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "medicare"
+version = "0.1.0"
+description = "A Medicare web application"
+authors = ["Your Name"]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+Django = "4.2.7"
+python-decouple = "3.8"
+Pillow = "10.1.0"
+django-crispy-forms = "2.1"
+crispy-bootstrap5 = "0.7"
+gunicorn = "21.2.0"
+whitenoise = "6.6.0"
+psycopg2-binary = "2.9.9"
+dj-database-url = "2.1.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
